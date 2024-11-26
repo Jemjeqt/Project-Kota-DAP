@@ -14,13 +14,14 @@
 
 <body class="relative min-h-screen">
   <!-- Navbar -->
+  <!-- Navbar -->
   <header x-data="{ navbarOpen: false, showMegaMenu: false }">
     <nav class="fixed w-full bg-black bg-opacity-50 text-white z-50">
       <div class="container mx-auto px-6">
         <div class="flex items-center justify-between">
           <!-- Logo -->
           <div class="py-4">
-            <a href="#home" class="text-2xl font-bold">Medan Kota Keras</a>
+            <a href="/LandingPage/indeks.html" class="text-2xl font-bold">Kota Bandung</a>
           </div>
 
           <!-- Right Navigation -->
@@ -37,13 +38,12 @@
               class="absolute right-0 top-full w-full md:relative md:w-auto md:top-0">
               <ul class="flex flex-col md:flex-row md:space-x-8 bg-black bg-opacity-90 md:bg-transparent p-4 md:p-0">
                 <li>
-                  <a href="/LandingPage/indeks.html"
-                    class="block py-2 hover:text-gray-300 transition duration-300">Home</a>
+                  <a href="#home" class="block py-2 hover:text-gray-300 transition duration-300">Home</a>
                 </li>
                 <li class="relative group">
                   <button @mouseenter="showMegaMenu = true" @click="showMegaMenu = !showMegaMenu"
                     class="flex items-center gap-1 py-2 hover:text-gray-300 transition duration-300">
-                    Tentang
+                    Menu
                     <svg class="w-4 h-4 transition-transform duration-200" :class="showMegaMenu ? '-rotate-180' : ''"
                       fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -58,28 +58,22 @@
                       <a href="#sejarah"
                         class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
                         <div>
-                          <h3 class="font-semibold mb-1">Sejarah</h3>
-                          <p class="text-sm text-gray-300">Pelajari tentang sejarah Kota Medan</p>
+                          <h3 class="font-semibold mb-1">Sejarah Kota Bandung</h3>
+                          <p class="text-sm text-gray-300">Pelajari tentang sejarah Kota Bandung</p>
                         </div>
                       </a>
-                      <a href="#news" class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                      <a href="#budaya"
+                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
                         <div>
                           <h3 class="font-semibold mb-1">Budaya</h3>
-                          <p class="text-sm text-gray-300">Eksplorasi keragaman budaya Medan</p>
+                          <p class="text-sm text-gray-300">Eksplorasi keragaman budaya Kota Bandung</p>
                         </div>
                       </a>
-                      <a href="#pemuda"
+                      <a href="#dokumentasi"
                         class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
                         <div>
-                          <h3 class="font-semibold mb-1">Pemuda</h3>
-                          <p class="text-sm text-gray-300">Pelajari tentang organisasi pemuda di Medan</p>
-                        </div>
-                      </a>
-                      <a href="#olimpiade"
-                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
-                        <div>
-                          <h3 class="font-semibold mb-1">Olimpiade</h3>
-                          <p class="text-sm text-gray-300">Ikuti berita terbaru tentang olimpiade di Medan</p>
+                          <h3 class="font-semibold mb-1">Dokumentasi</h3>
+                          <p class="text-sm text-gray-300">Menampilkan keseluruhan isi dari kegiatan Kota Bandung</p>
                         </div>
                       </a>
                       <a href="#pariwisata"
@@ -89,21 +83,30 @@
                           <p class="text-sm text-gray-300">Temukan tempat wisata terbaik di Medan</p>
                         </div>
                       </a>
-                      <a href="#ekonomi"
+                      <a href="#layanan"
                         class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
                         <div>
-                          <h3 class="font-semibold mb-1">Ekonomi</h3>
-                          <p class="text-sm text-gray-300">Pelajari tentang perkembangan ekonomi di Medan</p>
+                          <h3 class="font-semibold mb-1">Layanan</h3>
+                          <p class="text-sm text-gray-300">Tempat pengaduan masyarakat terkait hal hal yang terjadi di
+                            Kota Bandung</p>
+                        </div>
+                      </a>
+                      <a href="#faq" class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">FAQ</h3>
+                          <p class="text-sm text-gray-300">Tempat pengaduan terbuka bagi seluruh masyarakat Kota Bandung
+                          </p>
                         </div>
                       </a>
                     </div>
                   </div>
                 </li>
                 <li>
-                  <a href="#gallery" class="block py-2 hover:text-gray-300 transition duration-300">Dokumentasi</a>
+                  <a href="#pemerintahan"
+                    class="block py-2 hover:text-gray-300 transition duration-300">Pemerintahan</a>
                 </li>
                 <li>
-                  <a href="#layanan" class="block py-2 hover:text-gray-300 transition duration-300">Layanan</a>
+                  <a href="#inovasi" class="block py-2 hover:text-gray-300 transition duration-300">Inovasi</a>
                 </li>
                 <li>
                   <a href="/Berita/indeks.html"
@@ -127,16 +130,93 @@
 
   <!-- Berita Section -->
   <main class="container mx-auto px-6 py-8">
-    <h1 class="text-4xl font-bold mb-8">Berita Lengkap Seputar Kota Medan</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="daftarBerita">
-      <!-- Cards will be inserted here -->
-    </div>
-    <div class="text-center mt-8">
-      <div class="flex items-center justify-center">
-        <button id="loadMore"
-          class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors duration-300">
-          Tampilkan Lainnya
-        </button>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Article 1 -->
+      <div class="bg-white rounded-lg shadow-md p-4">
+        <img alt="Group of people holding an award" class="rounded-t-lg w-full" height="400"
+          src="https://storage.googleapis.com/a1aa/image/jeSPU9oExNV9IizW3Edfd9vEHfj2IrcmlzWhfYlTaLgDugTPB.jpg"
+          width="600" />
+        <div class="p-4">
+          <span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">
+            Pemerintahan
+          </span>
+          <h2 class="text-lg font-bold mt-2">
+            Naik Signifikan, Kabupaten Bandung Barat Raih Penghargaan dalam...
+          </h2>
+          <div class="text-gray-500 text-sm mt-2 flex items-center">
+            <i class="far fa-calendar-alt mr-2">
+            </i>
+            13 November 2024
+            <i class="fas fa-user ml-4 mr-2">
+            </i>
+            Admin
+            <i class="fas fa-eye ml-4 mr-2">
+            </i>
+            471
+          </div>
+          <p class="text-gray-700 mt-4">
+            BANDUNG BARAT - Kabupaten Bandung Barat, melalui Seksi Statistik di bawah Bidang Informasi dan Komunikasi
+            Publik Dinas Komunikasi, Informatika, dan Statistik (Diskominfotik), berhasil meraih peng...
+          </p>
+        </div>
+      </div>
+      <!-- Article 2 -->
+      <div class="bg-white rounded-lg shadow-md p-4">
+        <img alt="People holding posters and evidence" class="rounded-t-lg w-full" height="400"
+          src="https://storage.googleapis.com/a1aa/image/NeSEwnWu1ftsSEvZhcheMiQNKWe6RN3GfoAYU5IuJkXRcBneE.jpg"
+          width="600" />
+        <div class="p-4">
+          <span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">
+            Layanan Masyarakat
+          </span>
+          <h2 class="text-lg font-bold mt-2">
+            Upaya Diskominfotik KBB dalam Cegah Judi Online dan Jaga...
+          </h2>
+          <div class="text-gray-500 text-sm mt-2 flex items-center">
+            <i class="far fa-calendar-alt mr-2">
+            </i>
+            11 November 2024
+            <i class="fas fa-user ml-4 mr-2">
+            </i>
+            Admin
+            <i class="fas fa-eye ml-4 mr-2">
+            </i>
+            218
+          </div>
+          <p class="text-gray-700 mt-4">
+            Dinas Komunikasi, Informatika, dan Statistik (Diskominfotik) Kabupaten Bandung Barat (KBB) mengoptimalkan
+            Tim Computer Security Incident Response (CSIRT) dalam menangani setiap serangan yang bertujuan...
+          </p>
+        </div>
+      </div>
+      <!-- Article 3 -->
+      <div class="bg-white rounded-lg shadow-md p-4">
+        <img alt="People receiving an award outdoors" class="rounded-t-lg w-full" height="400"
+          src="https://storage.googleapis.com/a1aa/image/dR7MQY74dm60EFxbhpJhEHF9Vm0w1b4G3Mx471LJLvo3CO9E.jpg"
+          width="600" />
+        <div class="p-4">
+          <span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">
+            Kesehatan &amp; Olahraga
+          </span>
+          <h2 class="text-lg font-bold mt-2">
+            Kabupaten Bandung Barat Raih Penghargaan UHC Award 2024 pad...
+          </h2>
+          <div class="text-gray-500 text-sm mt-2 flex items-center">
+            <i class="far fa-calendar-alt mr-2">
+            </i>
+            12 November 2024
+            <i class="fas fa-user ml-4 mr-2">
+            </i>
+            Admin
+            <i class="fas fa-eye ml-4 mr-2">
+            </i>
+            242
+          </div>
+          <p class="text-gray-700 mt-4">
+            Bandung, 12 November 2024 – Hari Kesehatan Nasional (HKN) ke-60 tahun 2024 tingkat Provinsi Jawa Barat,
+            Kabupaten Bandung Barat menerima penghargaan UHC Award 2024 dari Gubernur Jawa Barat sebag...
+          </p>
+        </div>
       </div>
     </div>
   </main>
