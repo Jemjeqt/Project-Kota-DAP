@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Berita News Kota Medan</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="relative min-h-screen">
+  <!-- Navbar -->
+  <header x-data="{ navbarOpen: false, showMegaMenu: false }">
+    <nav class="fixed w-full bg-black bg-opacity-50 text-white z-50">
+      <div class="container mx-auto px-6">
+        <div class="flex items-center justify-between">
+          <!-- Logo -->
+          <div class="py-4">
+            <a href="#home" class="text-2xl font-bold">Medan Kota Keras</a>
+          </div>
+
+          <!-- Right Navigation -->
+          <div class="flex items-center">
+            <!-- Mobile Menu Button -->
+            <button @click="navbarOpen = !navbarOpen" class="md:hidden px-3 py-2">
+              <span class="block h-0.5 w-6 bg-white mb-1"></span>
+              <span class="block h-0.5 w-6 bg-white mb-1"></span>
+              <span class="block h-0.5 w-6 bg-white"></span>
+            </button>
+
+            <!-- Navigation Links -->
+            <div :class="!navbarOpen && 'hidden md:flex'"
+              class="absolute right-0 top-full w-full md:relative md:w-auto md:top-0">
+              <ul class="flex flex-col md:flex-row md:space-x-8 bg-black bg-opacity-90 md:bg-transparent p-4 md:p-0">
+                <li>
+                  <a href="/LandingPage/indeks.html"
+                    class="block py-2 hover:text-gray-300 transition duration-300">Home</a>
+                </li>
+                <li class="relative group">
+                  <button @mouseenter="showMegaMenu = true" @click="showMegaMenu = !showMegaMenu"
+                    class="flex items-center gap-1 py-2 hover:text-gray-300 transition duration-300">
+                    Tentang
+                    <svg class="w-4 h-4 transition-transform duration-200" :class="showMegaMenu ? '-rotate-180' : ''"
+                      fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+
+                  <!-- Mega Menu -->
+                  <div x-show="showMegaMenu" @mouseleave="showMegaMenu = false" @click.outside="showMegaMenu = false"
+                    @keydown.escape="showMegaMenu = false"
+                    class="absolute right-0 w-screen md:w-[600px] bg-black bg-opacity-90 p-6 rounded-lg">
+                    <div class="grid md:grid-cols-2 gap-4">
+                      <a href="#sejarah"
+                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">Sejarah</h3>
+                          <p class="text-sm text-gray-300">Pelajari tentang sejarah Kota Medan</p>
+                        </div>
+                      </a>
+                      <a href="#news" class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">Budaya</h3>
+                          <p class="text-sm text-gray-300">Eksplorasi keragaman budaya Medan</p>
+                        </div>
+                      </a>
+                      <a href="#pemuda"
+                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">Pemuda</h3>
+                          <p class="text-sm text-gray-300">Pelajari tentang organisasi pemuda di Medan</p>
+                        </div>
+                      </a>
+                      <a href="#olimpiade"
+                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">Olimpiade</h3>
+                          <p class="text-sm text-gray-300">Ikuti berita terbaru tentang olimpiade di Medan</p>
+                        </div>
+                      </a>
+                      <a href="#pariwisata"
+                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">Pariwisata</h3>
+                          <p class="text-sm text-gray-300">Temukan tempat wisata terbaik di Medan</p>
+                        </div>
+                      </a>
+                      <a href="#ekonomi"
+                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">Ekonomi</h3>
+                          <p class="text-sm text-gray-300">Pelajari tentang perkembangan ekonomi di Medan</p>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <a href="#gallery" class="block py-2 hover:text-gray-300 transition duration-300">Dokumentasi</a>
+                </li>
+                <li>
+                  <a href="#layanan" class="block py-2 hover:text-gray-300 transition duration-300">Layanan</a>
+                </li>
+                <li>
+                  <a href="/Berita/indeks.html"
+                    class="block py-2 hover:text-gray-300 transition duration-300">Berita</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <section id="home" class="hero-section h-screen relative">
+    <!-- Video background -->
+    <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover -z-10">
+      <source src="/assets/vidio.mp4" type="video/mp4">
+    </video>
+  </section>
+
+  <!-- Berita Section -->
+  <main class="container mx-auto px-6 py-8">
+    <h1 class="text-4xl font-bold mb-8">Berita Lengkap Seputar Kota Medan</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="daftarBerita">
+      <!-- Cards will be inserted here -->
+    </div>
+    <div class="text-center mt-8">
+      <div class="flex items-center justify-center">
+        <button id="loadMore"
+          class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors duration-300">
+          Tampilkan Lainnya
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-black text-white py-8 w-full">
+    <div class="container mx-auto px-6">
+      <p class="text-center">&copy; 2024 ModernCity. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+  <script type="module" src="main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+</body>
+
+</html>

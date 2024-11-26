@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Kota Bandung</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-white">
+  <!-- Navbar -->
+  <header x-data="{ navbarOpen: false, showMegaMenu: false }">
+    <nav class="fixed w-full bg-black bg-opacity-50 text-white z-50">
+      <div class="container mx-auto px-6">
+        <div class="flex items-center justify-between">
+          <!-- Logo -->
+          <div class="py-4">
+            <a href="#home" class="text-2xl font-bold">Kota Bandung</a>
+          </div>
+
+          <!-- Right Navigation -->
+          <div class="flex items-center">
+            <!-- Mobile Menu Button -->
+            <button @click="navbarOpen = !navbarOpen" class="md:hidden px-3 py-2">
+              <span class="block h-0.5 w-6 bg-white mb-1"></span>
+              <span class="block h-0.5 w-6 bg-white mb-1"></span>
+              <span class="block h-0.5 w-6 bg-white"></span>
+            </button>
+
+            <!-- Navigation Links -->
+            <div :class="!navbarOpen && 'hidden md:flex'"
+              class="absolute right-0 top-full w-full md:relative md:w-auto md:top-0">
+              <ul class="flex flex-col md:flex-row md:space-x-8 bg-black bg-opacity-90 md:bg-transparent p-4 md:p-0">
+                <li>
+                  <a href="#home" class="block py-2 hover:text-gray-300 transition duration-300">Home</a>
+                </li>
+                <li class="relative group">
+                  <button @mouseenter="showMegaMenu = true" @click="showMegaMenu = !showMegaMenu"
+                    class="flex items-center gap-1 py-2 hover:text-gray-300 transition duration-300">
+                    Menu
+                    <svg class="w-4 h-4 transition-transform duration-200" :class="showMegaMenu ? '-rotate-180' : ''"
+                      fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+
+                  <!-- Mega Menu -->
+                  <div x-show="showMegaMenu" @mouseleave="showMegaMenu = false" @click.outside="showMegaMenu = false"
+                    @keydown.escape="showMegaMenu = false"
+                    class="absolute right-0 w-screen md:w-[600px] bg-black bg-opacity-90 p-6 rounded-lg">
+                    <div class="grid md:grid-cols-2 gap-4">
+                      <a href="#sejarah"
+                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">Sejarah Kota Bandung</h3>
+                          <p class="text-sm text-gray-300">Pelajari tentang sejarah Kota Bandung</p>
+                        </div>
+                      </a>
+                      <a href="#budaya"
+                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">Budaya</h3>
+                          <p class="text-sm text-gray-300">Eksplorasi keragaman budaya Kota Bandung</p>
+                        </div>
+                      </a>
+                      <a href="#dokumentasi"
+                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">Dokumentasi</h3>
+                          <p class="text-sm text-gray-300">Menampilkan keseluruhan isi dari kegiatan Kota Bandung</p>
+                        </div>
+                      </a>
+                      <a href="#pariwisata"
+                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">Pariwisata</h3>
+                          <p class="text-sm text-gray-300">Temukan tempat wisata terbaik di Medan</p>
+                        </div>
+                      </a>
+                      <a href="#layanan"
+                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">Layanan</h3>
+                          <p class="text-sm text-gray-300">Tempat pengaduan masyarakat terkait hal hal yang terjadi di
+                            Kota Bandung</p>
+                        </div>
+                      </a>
+                      <a href="#faq" class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">FAQ</h3>
+                          <p class="text-sm text-gray-300">Tempat pengaduan terbuka bagi seluruh masyarakat Kota Bandung
+                          </p>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <a href="#pemerintahan"
+                    class="block py-2 hover:text-gray-300 transition duration-300">Pemerintahan</a>
+                </li>
+                <li>
+                  <a href="#inovasi" class="block py-2 hover:text-gray-300 transition duration-300">Inovasi</a>
+                </li>
+                <li>
+                  <a href="/Berita/indeks.html"
+                    class="block py-2 hover:text-gray-300 transition duration-300">Berita</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section h-screen relative">
+    <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover -z-10">
+      <source src="/assets/bandung.mp4" type="video/mp4">
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/50 -z-10"></div>
+    <div class="container mx-auto px-6 absolute inset-0 flex flex-col items-center">
+      <div class="flex-grow flex items-center justify-center">
+        <div class="text-center text-white">
+          <h1 class="text-6xl font-bold mb-4">Selamat Datang di Kota Bandung</h1>
+          <p class="text-xl">Tempat yang cocok untuk berlibur.</p>
+        </div>
+      </div>
+      <div class="mb-8">
+        <label class="switch">
+          <input type="checkbox" onchange="buttonFunction()">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <!-- About Section with News -->
+  <section id="about" class="py-20 bg-gray-100">
+    <main>
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col lg:flex-row gap-8">
+          <!-- Main Content (70%) -->
+          <div class="lg:w-[70%]" id="sejarah">
+            <h2 class="text-4xl font-bold mb-12">KOTA GWEH EUI</h2>
+            <div class="border-2 border-gray-300 rounded-lg shadow-md p-4">
+              <div class="flex flex-col gap-8">
+                <!-- Top 3 cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  <div class="bg-white p-6 rounded-lg shadow-lg transform hover:-translate-y-2 transition duration-300">
+                    <h3 class="text-xl font-bold mb-4">Hidup Cerdas</h3>
+                    <p>Alami kemajuan terbaru dalam teknologi rumah pintar dan sistem otomatis.</p>
+                  </div>
+                  <div class="bg-white p-6 rounded-lg shadow-lg transform hover:-translate-y-2 transition duration-300">
+                    <h3 class="text-xl font-bold mb-4">Ruangan Hijau</h3>
+                    <p>Nikmati taman-taman yang melimpah dan inisiatif lingkungan berkelanjutan.</p>
+                  </div>
+                  <div class="bg-white p-6 rounded-lg shadow-lg transform hover:-translate-y-2 transition duration-300">
+                    <h3 class="text-xl font-bold mb-4">Transit Modern</h3>
+                    <p>Terhubung dengan mudah menggunakan jaringan transportasi umum yang maju.</p>
+                  </div>
+                </div>
+
+                <!-- Bottom full-width card -->
+                <div class="bg-white p-6 rounded-lg shadow-lg transform hover:-translate-x-2 transition duration-300">
+                  <div class="flex flex-col md:flex-row gap-8">
+                    <img src="https://picsum.photos/200/304" alt="Economy"
+                      class="w-full md:w-1/3 h-64 object-cover rounded-lg">
+                    <div class="md:w-2/3">
+                      <h3 class="text-xl font-bold mb-4">Perekonomian</h3>
+                      <p>Kota kita memiliki perekonomian yang kuat dan terus berkembang, dengan PDB per kapita lebih
+                        dari $10.000.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bottom section with 1+2 layout -->
+                <div class="flex flex-col md:flex-row gap-8" id="budaya">
+                  <!-- Left single card -->
+                  <div class="md:w-1/3">
+                    <div
+                      class="bg-white p-6 rounded-lg shadow-lg transform hover:-translate-y-2 transition duration-300 h-full">
+                      <h3 class="text-xl font-bold mb-4">Hidup Cerdas</h3>
+                      <p>Alami kemajuan terbaru dalam teknologi rumah pintar dan sistem otomatis.</p>
+                    </div>
+                  </div>
+                  <!-- Right merged cards -->
+                  <div class="md:w-2/3">
+                    <div
+                      class="bg-white p-6 rounded-lg shadow-lg transform hover:-translate-x-2 transition duration-300">
+                      <div class="flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/2">
+                          <h3 class="text-xl font-bold mb-4">Ruangan Hijau</h3>
+                          <p>Nikmati taman-taman yang melimpah dan inisiatif lingkungan berkelanjutan.</p>
+                        </div>
+                        <div class="md:w-1/2">
+                          <h3 class="text-xl font-bold mb-4">Transit Modern</h3>
+                          <p>Terhubung dengan mudah menggunakan jaringan transportasi umum yang maju.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Kanan Gambar -->
+                <div class="bg-white p-6 rounded-lg shadow-lg transform hover:-translate-x-2 transition duration-300">
+                  <div class="flex flex-col md:flex-row gap-8">
+                    <div class="md:w-2/3">
+                      <h3 class="text-xl font-bold mb-4">Perekonomian</h3>
+                      <p>Kota kita memiliki perekonomian yang kuat dan terus berkembang, dengan PDB per kapita lebih
+                        dari $10.000.</p>
+                    </div>
+                    <img src="https://picsum.photos/200/304" alt="Economy"
+                      class="w-full md:w-1/3 h-64 object-cover rounded-lg">
+                  </div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-8">
+                  <!-- Left merged cards -->
+                  <div class="md:w-2/3">
+                    <div
+                      class="bg-white p-6 rounded-lg shadow-lg transform hover:-translate-x-2 transition duration-300">
+                      <div class="flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/2">
+                          <h3 class="text-xl font-bold mb-4">Hidup Cerdas</h3>
+                          <p>Alami kemajuan terbaru dalam teknologi rumah pintar dan sistem otomatis bersama ruangan
+                            hijau.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Right single card -->
+                  <div class="md:w-1/3">
+                    <div
+                      class="bg-white p-6 rounded-lg shadow-lg transform hover:-translate-y-2 transition duration-300 h-full">
+                      <h3 class="text-xl font-bold mb-4">Transit Modern</h3>
+                      <p>Terhubung dengan mudah menggunakan jaringan transportasi umum yang maju.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- News Sidebar (30%) -->
+          <aside class="lg:w-[30%]" id="kontainerBerita">
+            <div class="bg-white rounded-lg shadow-lg p-6 sticky top-24">
+              <h2 class="text-2xl font-bold mb-6 block">BERITA TERKINI EUI</h2>
+              <div class="space-y-6 flex flex-col gap-8" id="daftarBerita">
+                <div class="mt-8 text-center">
+                  <div class="mt-8 text-center">
+                  </div>
+                </div>
+                <!-- Isian disini -->
+              </div>
+              <div class="flex items-center justify-center">
+                <button id="loadMore"
+                  class="bg-gray-900 text-white px-6 py-3 rounded-lg mt-6 hover:-translate-y-1 transition-transform duration-300">
+                  Tampilkan Selengkapnya
+                </button>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="dokumentasi" class="py-20">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12">Dokumentasi Kota Bandung</h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000" alt="City View 1"
+          class="w-full h-64 object-cover rounded-lg hover:opacity-75 transition duration-300">
+        <img src="https://images.unsplash.com/photo-1444723121867-7a241cacace9" alt="City View 2"
+          class="w-full h-64 object-cover rounded-lg hover:opacity-75 transition duration-300">
+        <img src="https://images.unsplash.com/photo-1465447142348-e9952c393450" alt="City View 3"
+          class="w-full h-64 object-cover rounded-lg hover:opacity-75 transition duration-300">
+        <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000" alt="City View 1"
+          class="w-full h-64 object-cover rounded-lg hover:opacity-75 transition duration-300">
+        <img src="https://images.unsplash.com/photo-1444723121867-7a241cacace9" alt="City View 2"
+          class="w-full h-64 object-cover rounded-lg hover:opacity-75 transition duration-300">
+        <img src="https://images.unsplash.com/photo-1465447142348-e9952c393450" alt="City View 3"
+          class="w-full h-64 object-cover rounded-lg hover:opacity-75 transition duration-300">
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Carrousel Section -->
+  <div class="container mx-auto p-4">
+    <section id="gallery" class="border border-gray-300 rounded-lg shadow-md p-4">
+      <h2 class="text-4xl font-bold text-center mb-12">Event Besar Kota Bandung</h2>
+      <div id="default-carousel" class="relative w-full" data-carousel="slide">
+        <!-- Carousel wrapper -->
+        <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+          <!-- Item 1 -->
+          <div class="duration-700 ease-in-out" data-carousel-item="active">
+            <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df"
+              class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+              alt="City skyline at night">
+          </div>
+          <!-- Item 2 -->
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000"
+              class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Modern city view">
+          </div>
+          <!-- Item 3 -->
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="https://images.unsplash.com/photo-1444723121867-7a241cacace9"
+              class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+              alt="City in the morning">
+          </div>
+          <!-- Item 4 -->
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="https://images.unsplash.com/photo-1465447142348-e9952c393450"
+              class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Downtown area">
+          </div>
+          <!-- Item 5 -->
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="https://images.unsplash.com/photo-1514924013411-cbf25faa35bb"
+              class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="City architecture">
+          </div>
+        </div>
+        <!-- Slider indicators -->
+        <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+          <button type="button" class="w-3 h-3 rounded-full bg-white/30 dark:bg-gray-800/30" aria-current="true"
+            aria-label="Slide 1" data-carousel-slide-to="0"></button>
+          <button type="button" class="w-3 h-3 rounded-full bg-white/30 dark:bg-gray-800/30" aria-current="false"
+            aria-label="Slide 2" data-carousel-slide-to="1"></button>
+          <button type="button" class="w-3 h-3 rounded-full bg-white/30 dark:bg-gray-800/30" aria-current="false"
+            aria-label="Slide 3" data-carousel-slide-to="2"></button>
+          <button type="button" class="w-3 h-3 rounded-full bg-white/30 dark:bg-gray-800/30" aria-current="false"
+            aria-label="Slide 4" data-carousel-slide-to="3"></button>
+          <button type="button" class="w-3 h-3 rounded-full bg-white/30 dark:bg-gray-800/30" aria-current="false"
+            aria-label="Slide 5" data-carousel-slide-to="4"></button>
+        </div>
+        <!-- Slider controls -->
+        <button type="button"
+          class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+          data-carousel-prev>
+          <span
+            class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M5 1 1 5l4 4" />
+            </svg>
+            <span class="sr-only">Previous</span>
+          </span>
+        </button>
+        <button type="button"
+          class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+          data-carousel-next>
+          <span
+            class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="m1 9 4-4-4-4" />
+            </svg>
+            <span class="sr-only">Next</span>
+          </span>
+        </button>
+      </div>
+    </section>
+  </div>
+
+
+
+
+
+  <!-- Layanan Section -->
+  <div class="container mx-auto p-4 mt-12">
+    <section id="layanan" class="border-2 border-gray-300 rounded-lg shadow-md p-4">
+      <h2 class="text-4xl font-bold text-center mb-12">Layanan Public</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <!-- Icon Section -->
+        <a href="https://smartcity.bandung.go.id/services" target="_blank" rel="noopener noreferrer">
+          <div class="border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow duration-300">
+            <div class="flex flex-col items-center">
+              <img alt="Icon for Layanan" class="w-12 h-12 mb-4" height="50"
+                src="https://storage.googleapis.com/a1aa/image/KBZF8zJ9PbKpKxg0ABFEsKkO3koPEyvzVaVOdj2puiWsT28E.jpg"
+                width="50" />
+              <span class="text-sm">Layanan</span>
+            </div>
+          </div>
+        </a>
+        <a href="https://smartcity.bandung.go.id/thread/pengaduan-gawat-darurat" target="_blank"
+          rel="noopener noreferrer">
+          <div class="border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow duration-300">
+            <div class="flex flex-col items-center">
+              <img alt="Icon for Pengaduan Gawat Darurat" class="w-12 h-12 mb-4" height="50"
+                src="https://storage.googleapis.com/a1aa/image/X4gOx6NoI6ZyGNNGMkeZoXtOgtxrpEm1mFUQuh2nQkETns5JA.jpg"
+                width="50" />
+              <span class="text-sm">Pengaduan Gawat Darurat</span>
+            </div>
+          </div>
+        </a>
+        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow duration-300">
+          <div class="flex flex-col items-center">
+            <img alt="Icon for Pariwisata" class="w-12 h-12 mb-4" height="50"
+              src="https://storage.googleapis.com/a1aa/image/4ErsqyNhzHI2DRoigNpeFpLU6AGKezPQacXxGFQz6HBzOZzTA.jpg"
+              width="50" />
+            <span class="text-sm">Pariwisata</span>
+          </div>
+        </div>
+        <a href="https://smartcity.bandung.go.id/services/cctv" target="_blank" rel="noopener noreferrer">
+          <div class="border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow duration-300">
+            <div class="flex flex-col items-center">
+              <img alt="Icon for CCTV" class="w-12 h-12 mb-4" height="50"
+                src="https://storage.googleapis.com/a1aa/image/0FLbMt5dFZKYA9sKDRt0eSLDdyf23YJYsoaBTewnz91YdymnA.jpg"
+                width="50" />
+              <span class="text-sm">CCTV</span>
+            </div>
+          </div>
+        </a>
+        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow duration-300">
+          <div class="flex flex-col items-center">
+            <img alt="Icon for Kolaborasi" class="w-12 h-12 mb-4" height="50"
+              src="https://storage.googleapis.com/a1aa/image/yqxRMi9YfzzwVyZgUtC4cLk8RraG59hF3JFJxZf75G1APZzTA.jpg"
+              width="50" />
+            <span class="text-sm">Kolaborasi</span>
+          </div>
+        </div>
+        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow duration-300">
+          <div class="flex flex-col items-center">
+            <img alt="Icon for e-Book" class="w-12 h-12 mb-4" height="50"
+              src="https://storage.googleapis.com/a1aa/image/P1UQFIHgRcpiBReZC2TVqAkgiusSOx848fl76oyDbWUBPZzTA.jpg"
+              width="50" />
+            <span class="text-sm">e-Book</span>
+          </div>
+        </div>
+        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow duration-300">
+          <div class="flex flex-col items-center">
+            <img alt="Icon for Polling" class="w-12 h-12 mb-4" height="50"
+              src="https://storage.googleapis.com/a1aa/image/g6piApZkUvaGNROHNZe8owvp6nifCVDtDRCE5zllEYjvOZzTA.jpg"
+              width="50" />
+            <span class="text-sm">Polling</span>
+          </div>
+        </div>
+        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow duration-300">
+          <div class="flex flex-col items-center">
+            <img alt="Icon for Form" class="w-12 h-12 mb-4" height="50"
+              src="https://storage.googleapis.com/a1aa/image/RRgproCrRd56JROCF4U0ExWXYnrMoT6JzaRCAvDCNE8uT28E.jpg"
+              width="50" />
+            <span class="text-sm">Form</span>
+          </div>
+        </div>
+        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow duration-300">
+          <div class="flex flex-col items-center">
+            <img alt="Icon for Transportasi" class="w-12 h-12 mb-4" height="50"
+              src="https://storage.googleapis.com/a1aa/image/2Wbfy6G2qetfuJn2YJkHbZ2En6tVYMFFfWvCXasMGoHk7kNPB.jpg"
+              width="50" />
+            <span class="text-sm">Transportasi</span>
+          </div>
+        </div>
+        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow duration-300">
+          <div class="flex flex-col items-center">
+            <img alt="Icon for Kesehatan" class="w-12 h-12 mb-4" height="50"
+              src="https://storage.googleapis.com/a1aa/image/S1PeWg0heNl8ZkMgkatQxXkgBDVcNSqQOAuFd9tiNvvwOZzTA.jpg"
+              width="50" />
+            <span class="text-sm">Kesehatan</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="container mx-auto p-4">
+    <section class="min-h-screen p-8 m-5 ">
+      <div class="max-w-6xl mx-auto border-2 border-gray-300 rounded-lg shadow-md p-8 h-full bg-gray-100">
+        <!-- Header -->
+        <div class="text-center mb-12">
+          <p class="text-blue-600 font-medium mb-2">ELEMNT TERBARU DARI WEB</p>
+          <h1 class="text-4xl font-bold text-navy-900">ISI BEBAS DAH PUSING</h1>
+        </div>
+
+        <!-- FAQ Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 h-full" id="faq">
+          <div class="bg-white px-8 py-6 rounded-lg shadow-sm h-full">
+            <h3 class="text-xl font-bold mb-4">Is TailGrids Well-documented?</h3>
+            <p class="text-gray-600">
+              There are many variations of passages of Lorem Ipsum available,
+              but the majority have suffered alteration in some form, by injected
+              humour, or randomised words which don't look even slightly
+              passage of Lorem Ipsum believable.
+            </p>
+          </div>
+
+          <div class="bg-white px-8 py-6 rounded-lg shadow-sm h-full">
+            <h3 class="text-xl font-bold mb-4">Is it one-time payment?</h3>
+            <p class="text-gray-600">
+              There are many variations of passages of Lorem Ipsum available,
+              but the majority have suffered alteration in some form, by injected
+              humour, or randomised words which don't look even slightly
+              passage of Lorem Ipsum believable.
+            </p>
+          </div>
+
+          <div class="bg-white px-8 py-6 rounded-lg shadow-sm h-full">
+            <h3 class="text-xl font-bold mb-4">Do you provide support?</h3>
+            <p class="text-gray-600">
+              There are many variations of passages of Lorem Ipsum available,
+              but the majority have suffered alteration in some form, by injected
+              humour, or randomised words which don't look even slightly
+              passage of Lorem Ipsum believable.
+            </p>
+          </div>
+
+          <div class="bg-white px-8 py-6 rounded-lg shadow-sm h-full">
+            <h3 class="text-xl font-bold mb-4">Which license type is suitable for me?</h3>
+            <p class="text-gray-600">
+              There are many variations of passages of Lorem Ipsum available,
+              but the majority have suffered alteration in some form, by injected
+              humour, or randomised words which don't look even slightly
+              passage of Lorem Ipsum believable.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-black text-white py-8 w-full">
+    <div class="container mx-auto px-6">
+        <p class="text-center">&copy; 2024 ModernCity. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+  <script type="module" src="main.js"></script>\
+  <script src="main.js"></script>
+</body>
+
+</html>
