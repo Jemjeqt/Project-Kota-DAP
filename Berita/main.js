@@ -71,10 +71,14 @@ class NewsManager {
           <img 
             src="${item.gambar}" 
             alt="${item.judul}" 
+            
             loading="lazy" 
             class="w-full h-full object-cover"
             onerror="this.src='https://via.placeholder.com/800x400?text=Gambar+Tidak+Tersedia'"
           >
+          <span class="inline-block bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+            ${item.kategori}
+          </span>
         </div>
         <div class="p-6 flex flex-col flex-grow">
           <h3 class="text-xl font-bold text-red-800 mb-4 line-clamp-2 h-16">
