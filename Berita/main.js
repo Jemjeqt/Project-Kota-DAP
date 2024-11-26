@@ -67,30 +67,26 @@ class NewsManager {
   createNewsCard(item) {
     return `
       <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full">
-  <div class="relative h-56 md:h-64">
-    <img src="${item.gambar}" alt="${item.judul}" loading="lazy" class="w-full h-full object-cover">
-    <span class="absolute top-4 left-4 inline-block bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-      ${item.kategori}
-    </span>
-  </div>
-  <div class="p-6 flex flex-col flex-grow">
-    <h3 class="text-xl font-bold text-red-800 mb-2 line-clamp-2 h-16">
-      ${item.judul}
-    </h3>
-    <div class="flex items-center justify-between text-gray-500 mb-4">
-      <span class="text-sm">${item.tanggal}</span>
-      <span class="text-sm">${item.penulis}</span>
-    </div>
-    <p class="text-gray-600 mb-4 line-clamp-3 flex-grow">
-      ${item.ringkasan}
-    </p>
-    <div class="mt-auto">
-      <button type="button" class="inline-block px-4 py-2 text-red-500 hover:text-red-700 font-medium text-center transition-colors duration-200" onclick="alert('Fitur ini masih dalam pengembangan')">
-        Baca Selengkapnya
-      </button>
-    </div>
-  </div>
-</div>
+        <div class="relative h-56 md:h-64">
+          <img src="${item.gambar}" alt="${item.judul}" loading="lazy" class="w-full h-full object-cover" />
+          <span class="absolute top-4 left-4 inline-block bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+            ${item.kategori}
+          </span>
+        </div>
+        <div class="p-6 flex flex-col flex-grow">
+          <h3 class="text-xl font-bold text-red-800 mb-2 line-clamp-2 h-16">${item.judul}</h3>
+          <div class="flex items-center justify-between text-gray-500 mb-4">
+            <span class="text-sm">${item.tanggal}</span>
+            <span class="text-sm">${item.penulis}</span>
+          </div>
+          <p class="text-gray-600 mb-4 line-clamp-3 flex-grow">${item.ringkasan}</p>
+          <div class="mt-auto">
+            <button type="button" class="inline-block px-4 py-2 text-red-500 hover:text-red-700 font-medium text-center transition-colors duration-200" onclick="alert('Fitur ini masih dalam pengembangan')">
+              Baca Selengkapnya
+            </button>
+          </div>
+        </div>
+      </div>
     `;
   }
 

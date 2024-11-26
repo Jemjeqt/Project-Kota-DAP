@@ -169,7 +169,7 @@ function buttonFunction() {
   const currentBgImage = computedStyle.backgroundImage;
 
   if (currentBgImage === 'none' || currentBgImage === '') {
-    section.style.backgroundImage = "url('https://picsum.photos/1920/1080')";
+    section.style.backgroundImage = "url('https://bandungbaratkab.go.id/img/kbb-vector.png')";
     video.style.display = 'none';
     overlay.style.display = 'none';
   } else {
