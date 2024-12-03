@@ -14,7 +14,7 @@
 
 <body class="flex flex-col min-h-screen">
   <!-- Navbar -->
-  <header x-data="{ navbarOpen: false, showMegaMenu: false }">
+  <header x-data="{ navbarOpen: false, showMegaMenu1: false, showMegaMenu2: false }">
     <nav class="fixed w-full bg-black bg-opacity-50 text-white z-50">
       <div class="container mx-auto px-6">
         <div class="flex items-center justify-between">
@@ -33,27 +33,43 @@
             </button>
 
             <!-- Navigation Links -->
-            <div :class="!navbarOpen && 'hidden md:flex'"
+            <div x-data="{ 
+              navbarOpen: false, 
+              showMegaMenu1: false, 
+              showMegaMenu2: false 
+            }" :class="!navbarOpen && 'hidden md:flex'"
               class="absolute right-0 top-full w-full md:relative md:w-auto md:top-0">
               <ul class="flex flex-col md:flex-row md:space-x-8 bg-black bg-opacity-90 md:bg-transparent p-4 md:p-0">
                 <li>
                   <a href="#home" class="block py-2 hover:text-gray-300 transition duration-300">Home</a>
                 </li>
+
                 <li class="relative group">
-                  <button @mouseenter="showMegaMenu = true" @click="showMegaMenu = !showMegaMenu"
+                  <button @mouseenter="showMegaMenu1 = true; showMegaMenu2 = false"
+                    @click="showMegaMenu1 = !showMegaMenu1"
                     class="flex items-center gap-1 py-2 hover:text-gray-300 transition duration-300">
-                    Menu
-                    <svg class="w-4 h-4 transition-transform duration-200" :class="showMegaMenu ? '-rotate-180' : ''"
+                    Profil
+                    <svg class="w-4 h-4 transition-transform duration-200" :class="showMegaMenu1 ? '-rotate-180' : ''"
                       fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
 
-                  <!-- Mega Menu -->
-                  <div x-show="showMegaMenu" @mouseleave="showMegaMenu = false" @click.outside="showMegaMenu = false"
-                    @keydown.escape="showMegaMenu = false"
-                    class="absolute right-0 w-screen md:w-[600px] bg-black bg-opacity-90 p-6 rounded-lg">
+                  <!-- Mega Menu Profil -->
+                  <div x-show="showMegaMenu1" @mouseenter="showMegaMenu1 = true"
+                    @mouseleave="setTimeout(() => { showMegaMenu1 = false }, 200)"
+                    x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95"
+                    x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-200"
+                    x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                    class="absolute right-0 w-screen md:w-[600px] bg-black bg-opacity-90 p-6 rounded-lg z-50">
                     <div class="grid md:grid-cols-2 gap-4">
+                      <a href="#profil"
+                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">Profil Kota Bandung</h3>
+                          <p class="text-sm text-gray-300">Menampilkan informasi tentang Kota Bandung</p>
+                        </div>
+                      </a>
                       <a href="#sejarah"
                         class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
                         <div>
@@ -75,11 +91,34 @@
                           <p class="text-sm text-gray-300">Menampilkan keseluruhan isi dari kegiatan Kota Bandung</p>
                         </div>
                       </a>
-                      <a href="#pariwisata"
+                    </div>
+                  </div>
+                </li>
+
+                <li class="relative group">
+                  <button @mouseenter="showMegaMenu2 = true; showMegaMenu1 = false"
+                    @click="showMegaMenu2 = !showMegaMenu2"
+                    class="flex items-center gap-1 py-2 hover:text-gray-300 transition duration-300">
+                    Menu
+                    <svg class="w-4 h-4 transition-transform duration-200" :class="showMegaMenu2 ? '-rotate-180' : ''"
+                      fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+
+                  <!-- Mega Menu Menu -->
+                  <div x-show="showMegaMenu2" @mouseenter="showMegaMenu2 = true"
+                    @mouseleave="setTimeout(() => { showMegaMenu2 = false }, 200)"
+                    x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95"
+                    x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-200"
+                    x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                    class="absolute right-0 w-screen md:w-[600px] bg-black bg-opacity-90 p-6 rounded-lg z-50">
+                    <div class="grid md:grid-cols-2 gap-4">
+                      <a href="#dokumentasi"
                         class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
                         <div>
-                          <h3 class="font-semibold mb-1">Pariwisata</h3>
-                          <p class="text-sm text-gray-300">Temukan tempat wisata terbaik di Medan</p>
+                          <h3 class="font-semibold mb-1">Dokumentasi</h3>
+                          <p class="text-sm text-gray-300">Menampilkan keseluruhan isi dari kegiatan Kota Bandung</p>
                         </div>
                       </a>
                       <a href="#layanan"
@@ -90,16 +129,10 @@
                             Kota Bandung</p>
                         </div>
                       </a>
-                      <a href="#faq" class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
-                        <div>
-                          <h3 class="font-semibold mb-1">FAQ</h3>
-                          <p class="text-sm text-gray-300">Tempat pengaduan terbuka bagi seluruh masyarakat Kota Bandung
-                          </p>
-                        </div>
-                      </a>
                     </div>
                   </div>
                 </li>
+
                 <li>
                   <a href="#pemerintahan"
                     class="block py-2 hover:text-gray-300 transition duration-300">Pemerintahan</a>
@@ -246,7 +279,18 @@
                     </div>
                   </div>
                 </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg transform hover:-translate-x-2 transition duration-300">
+                  <div class="flex flex-col md:flex-row gap-8">
+                    <div class="md:w-2/3">
+                      <h3 class="text-xl font-bold mb-4">Total Jenis Makanan</h3>
+                      <div>
+                        <canvas id="myChart"></canvas>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
+
             </div>
           </div>
           <!-- News Sidebar (30%) -->
@@ -541,6 +585,43 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
   <script type="module" src="main.js"></script>\
   <script src="main.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Makanan Ringan', 'Makanan Berat', 'Desert', 'Minuman'],
+        datasets: [{
+          label: 'Total Jenis Makanan',
+          data: [12, 19, 3, 5],
+          backgroundColor: [
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)'
+          ],
+          borderColor: [
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 99, 132, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
 </body>
 
 </html>
