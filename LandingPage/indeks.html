@@ -33,20 +33,14 @@
             </button>
 
             <!-- Navigation Links -->
-            <div x-data="{ 
-              navbarOpen: false, 
-              showMegaMenu1: false, 
-              showMegaMenu2: false 
-            }" :class="!navbarOpen && 'hidden md:flex'"
+            <div :class="!navbarOpen && 'hidden md:flex'"
               class="absolute right-0 top-full w-full md:relative md:w-auto md:top-0">
               <ul class="flex flex-col md:flex-row md:space-x-8 bg-black bg-opacity-90 md:bg-transparent p-4 md:p-0">
                 <li>
                   <a href="#home" class="block py-2 hover:text-gray-300 transition duration-300">Home</a>
                 </li>
-
                 <li class="relative group">
-                  <button @mouseenter="showMegaMenu1 = true; showMegaMenu2 = false"
-                    @click="showMegaMenu1 = !showMegaMenu1"
+                  <button @mouseenter="showMegaMenu1 = true" @click="showMegaMenu1 = !showMegaMenu1"
                     class="flex items-center gap-1 py-2 hover:text-gray-300 transition duration-300">
                     Profil
                     <svg class="w-4 h-4 transition-transform duration-200" :class="showMegaMenu1 ? '-rotate-180' : ''"
@@ -55,13 +49,10 @@
                     </svg>
                   </button>
 
-                  <!-- Mega Menu Profil -->
-                  <div x-show="showMegaMenu1" @mouseenter="showMegaMenu1 = true"
-                    @mouseleave="setTimeout(() => { showMegaMenu1 = false }, 200)"
-                    x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95"
-                    x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-200"
-                    x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-                    class="absolute right-0 w-screen md:w-[600px] bg-black bg-opacity-90 p-6 rounded-lg z-50">
+                  <!-- Mega Menu -->
+                  <div x-show="showMegaMenu1" @mouseleave="showMegaMenu1 = false" @click.outside="showMegaMenu1 = false"
+                    @keydown.escape="showMegaMenu1 = false"
+                    class="absolute right-0 w-screen md:w-[600px] bg-black bg-opacity-90 p-6 rounded-lg">
                     <div class="grid md:grid-cols-2 gap-4">
                       <a href="#profil"
                         class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
@@ -94,10 +85,8 @@
                     </div>
                   </div>
                 </li>
-
                 <li class="relative group">
-                  <button @mouseenter="showMegaMenu2 = true; showMegaMenu1 = false"
-                    @click="showMegaMenu2 = !showMegaMenu2"
+                  <button @mouseenter="showMegaMenu2 = true" @click="showMegaMenu2 = !showMegaMenu2"
                     class="flex items-center gap-1 py-2 hover:text-gray-300 transition duration-300">
                     Menu
                     <svg class="w-4 h-4 transition-transform duration-200" :class="showMegaMenu2 ? '-rotate-180' : ''"
@@ -106,13 +95,10 @@
                     </svg>
                   </button>
 
-                  <!-- Mega Menu Menu -->
-                  <div x-show="showMegaMenu2" @mouseenter="showMegaMenu2 = true"
-                    @mouseleave="setTimeout(() => { showMegaMenu2 = false }, 200)"
-                    x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95"
-                    x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-200"
-                    x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-                    class="absolute right-0 w-screen md:w-[600px] bg-black bg-opacity-90 p-6 rounded-lg z-50">
+                  <!-- Mega Menu -->
+                  <div x-show="showMegaMenu2" @mouseleave="showMegaMenu2 = false" @click.outside="showMegaMenu2 = false"
+                    @keydown.escape="showMegaMenu2 = false"
+                    class="absolute right-0 w-screen md:w-[600px] bg-black bg-opacity-90 p-6 rounded-lg">
                     <div class="grid md:grid-cols-2 gap-4">
                       <a href="#dokumentasi"
                         class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
@@ -132,7 +118,6 @@
                     </div>
                   </div>
                 </li>
-
                 <li>
                   <a href="#pemerintahan"
                     class="block py-2 hover:text-gray-300 transition duration-300">Pemerintahan</a>
@@ -290,7 +275,7 @@
                   </div>
                 </div>
               </div>
-
+              
             </div>
           </div>
           <!-- News Sidebar (30%) -->
