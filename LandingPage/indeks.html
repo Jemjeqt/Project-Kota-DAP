@@ -37,26 +37,67 @@
               <ul class="menu flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-8">
                 <!-- Profil -->
                 <li class="relative" @mouseenter="openMenu = 'profil'" @mouseleave="openMenu = null">
-                  <button class="menu-item">
-                    Profil
-                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <button class="menu-item flex items-center space-x-2">
+                    <span>Profil</span>
+                    <svg class="w-4 h-4 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                   </button>
-                  <ul x-show="openMenu === 'profil'" x-transition
+                  <div x-show="openMenu === 'profil'" x-transition
                     class="dropdown-menu absolute bg-black bg-opacity-90 text-white p-4 rounded-lg shadow-lg space-y-2">
-                    <li><a href="#profil" class="dropdown-item">Profil Kota Bandung</a></li>
-                    <li><a href="#sejarah" class="dropdown-item">Sejarah Kota Bandung</a></li>
-                    <li><a href="#budaya" class="dropdown-item">Budaya</a></li>
-                    <li><a href="#dokumentasi" class="dropdown-item">Dokumentasi</a></li>
-                  </ul>
+                    <div class="grid md:grid-cols-2 gap-3">
+                      <a href="#sejarah"
+                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">Sejarah Kota Bandung</h3>
+                          <p class="text-sm text-gray-300">Pelajari tentang sejarah Kota Bandung</p>
+                        </div>
+                      </a>
+                      <a href="#budaya"
+                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">Budaya</h3>
+                          <p class="text-sm text-gray-300">Eksplorasi keragaman budaya Kota Bandung</p>
+                        </div>
+                      </a>
+                      <a href="#pariwisata"
+                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">Pariwisata</h3>
+                          <p class="text-sm text-gray-300">Temukan tempat wisata terbaik di Medan</p>
+                        </div>
+                      </a>
+                      <a href="#dokumentasi"
+                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">Dokumentasi</h3>
+                          <p class="text-sm text-gray-300">Menampilkan keseluruhan isi dari kegiatan Kota Bandung</p>
+                        </div>
+                      </a>
+                      <a href="#layanan"
+                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">Layanan</h3>
+                          <p class="text-sm text-gray-300">Tempat pengaduan masyarakat terkait hal hal yang terjadi di
+                            Kota Bandung</p>
+                        </div>
+                      </a>
+                      <a href="#faq" class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">FAQ</h3>
+                          <p class="text-sm text-gray-300">Tempat pengaduan terbuka bagi seluruh masyarakat Kota Bandung
+                          </p>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
                 </li>
 
                 <!-- Menu -->
                 <li class="relative" @mouseenter="openMenu = 'menu'" @mouseleave="openMenu = null">
-                  <button class="menu-item">
-                    Menu
-                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <button class="menu-item flex items-center space-x-2">
+                    <span>Menu</span>
+                    <svg class="w-4 h-4 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                   </button>
