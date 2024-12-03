@@ -33,102 +33,44 @@
             </button>
 
             <!-- Navigation Links -->
-            <div :class="!navbarOpen && 'hidden md:flex'"
-              class="absolute right-0 top-full w-full md:relative md:w-auto md:top-0">
-              <ul class="flex flex-col md:flex-row md:space-x-8 bg-black bg-opacity-90 md:bg-transparent p-4 md:p-0">
-                <li>
-                  <a href="#home" class="block py-2 hover:text-gray-300 transition duration-300">Home</a>
-                </li>
-                <li class="relative group">
-                  <button @mouseenter="showMegaMenu1 = true" @click="showMegaMenu1 = !showMegaMenu1"
-                    class="flex items-center gap-1 py-2 hover:text-gray-300 transition duration-300">
+            <div class="menu-container" x-data="{ openMenu: null }">
+              <ul class="menu flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-8">
+                <!-- Profil -->
+                <li class="relative" @mouseenter="openMenu = 'profil'" @mouseleave="openMenu = null">
+                  <button class="menu-item">
                     Profil
-                    <svg class="w-4 h-4 transition-transform duration-200" :class="showMegaMenu1 ? '-rotate-180' : ''"
-                      fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                   </button>
-
-                  <!-- Mega Menu -->
-                  <div x-show="showMegaMenu1" @mouseleave="showMegaMenu1 = false" @click.outside="showMegaMenu1 = false"
-                    @keydown.escape="showMegaMenu1 = false"
-                    class="absolute right-0 w-screen md:w-[600px] bg-black bg-opacity-90 p-6 rounded-lg">
-                    <div class="grid md:grid-cols-2 gap-4">
-                      <a href="#profil"
-                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
-                        <div>
-                          <h3 class="font-semibold mb-1">Profil Kota Bandung</h3>
-                          <p class="text-sm text-gray-300">Menampilkan informasi tentang Kota Bandung</p>
-                        </div>
-                      </a>
-                      <a href="#sejarah"
-                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
-                        <div>
-                          <h3 class="font-semibold mb-1">Sejarah Kota Bandung</h3>
-                          <p class="text-sm text-gray-300">Pelajari tentang sejarah Kota Bandung</p>
-                        </div>
-                      </a>
-                      <a href="#budaya"
-                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
-                        <div>
-                          <h3 class="font-semibold mb-1">Budaya</h3>
-                          <p class="text-sm text-gray-300">Eksplorasi keragaman budaya Kota Bandung</p>
-                        </div>
-                      </a>
-                      <a href="#dokumentasi"
-                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
-                        <div>
-                          <h3 class="font-semibold mb-1">Dokumentasi</h3>
-                          <p class="text-sm text-gray-300">Menampilkan keseluruhan isi dari kegiatan Kota Bandung</p>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
+                  <ul x-show="openMenu === 'profil'" x-transition
+                    class="dropdown-menu absolute bg-black bg-opacity-90 text-white p-4 rounded-lg shadow-lg space-y-2">
+                    <li><a href="#profil" class="dropdown-item">Profil Kota Bandung</a></li>
+                    <li><a href="#sejarah" class="dropdown-item">Sejarah Kota Bandung</a></li>
+                    <li><a href="#budaya" class="dropdown-item">Budaya</a></li>
+                    <li><a href="#dokumentasi" class="dropdown-item">Dokumentasi</a></li>
+                  </ul>
                 </li>
-                <li class="relative group">
-                  <button @mouseenter="showMegaMenu2 = true" @click="showMegaMenu2 = !showMegaMenu2"
-                    class="flex items-center gap-1 py-2 hover:text-gray-300 transition duration-300">
+
+                <!-- Menu -->
+                <li class="relative" @mouseenter="openMenu = 'menu'" @mouseleave="openMenu = null">
+                  <button class="menu-item">
                     Menu
-                    <svg class="w-4 h-4 transition-transform duration-200" :class="showMegaMenu2 ? '-rotate-180' : ''"
-                      fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                   </button>
+                  <ul x-show="openMenu === 'menu'" x-transition
+                    class="dropdown-menu absolute bg-black bg-opacity-90 text-white p-4 rounded-lg shadow-lg space-y-2">
+                    <li><a href="#layanan" class="dropdown-item">Layanan</a></li>
+                    <li><a href="#dokumentasi" class="dropdown-item">Dokumentasi</a></li>
+                  </ul>
+                </li>
 
-                  <!-- Mega Menu -->
-                  <div x-show="showMegaMenu2" @mouseleave="showMegaMenu2 = false" @click.outside="showMegaMenu2 = false"
-                    @keydown.escape="showMegaMenu2 = false"
-                    class="absolute right-0 w-screen md:w-[600px] bg-black bg-opacity-90 p-6 rounded-lg">
-                    <div class="grid md:grid-cols-2 gap-4">
-                      <a href="#dokumentasi"
-                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
-                        <div>
-                          <h3 class="font-semibold mb-1">Dokumentasi</h3>
-                          <p class="text-sm text-gray-300">Menampilkan keseluruhan isi dari kegiatan Kota Bandung</p>
-                        </div>
-                      </a>
-                      <a href="#layanan"
-                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
-                        <div>
-                          <h3 class="font-semibold mb-1">Layanan</h3>
-                          <p class="text-sm text-gray-300">Tempat pengaduan masyarakat terkait hal hal yang terjadi di
-                            Kota Bandung</p>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <a href="#pemerintahan"
-                    class="block py-2 hover:text-gray-300 transition duration-300">Pemerintahan</a>
-                </li>
-                <li>
-                  <a href="#inovasi" class="block py-2 hover:text-gray-300 transition duration-300">Inovasi</a>
-                </li>
-                <li>
-                  <a href="/Berita/indeks.html"
-                    class="block py-2 hover:text-gray-300 transition duration-300">Berita</a>
-                </li>
+                <!-- Other Static Links -->
+                <li><a href="#pemerintahan" class="menu-item">Pemerintahan</a></li>
+                <li><a href="#inovasi" class="menu-item">Inovasi</a></li>
+                <li><a href="/Berita/indeks.html" class="menu-item">Berita</a></li>
               </ul>
             </div>
           </div>
