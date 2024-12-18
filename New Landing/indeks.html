@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Website Kota Banda Aceh</title>
+  <title>Berita News Kota Bandung</title>
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -12,15 +12,15 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="flex flex-col min-h-screen">
+<body class="relative min-h-screen">
   <!-- Navbar -->
-  <header x-data="{ navbarOpen: false, showMegaMenu1: false, showMegaMenu2: false }">
+  <header x-data="{ navbarOpen: false, showMegaMenu: false }">
     <nav class="fixed w-full bg-black bg-opacity-50 text-white z-50">
-      <div class="container mx-auto px-6">
-        <div class="flex items-center justify-between">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between py-3">
           <!-- Logo -->
-          <div class="py-4">
-            <a href="/LandingPage/indeks.html" class="text-2xl font-bold">Kota Banda Aceh</a>
+          <div>
+            <a href="/LandingPage/indeks.html" class="text-xl font-bold">Kota Banda Aceh</a>
           </div>
 
           <!-- Right Navigation -->
@@ -33,48 +33,84 @@
             </button>
 
             <!-- Navigation Links -->
-            <div class="menu-container" x-data="{ openMenu: null }">
-              <ul class="menu flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-8">
-                <!-- Profil -->
-                <li class="relative" @mouseenter="openMenu = 'profil'" @mouseleave="openMenu = null">
-                  <button class="menu-item flex items-center space-x-2">
-                    <span>Profile</span>
-                    <svg class="w-4 h-4 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            <div :class="!navbarOpen && 'hidden md:flex'"
+              class="absolute right-0 top-full w-full md:relative md:w-auto md:top-0">
+              <ul class="flex flex-col md:flex-row md:space-x-6 bg-black bg-opacity-90 md:bg-transparent p-4 md:p-0">
+                <li>
+                  <a href="/LandingPage/indeks.html"
+                    class="block py-2 hover:text-gray-300 transition duration-300">Home</a>
+                </li>
+                <li class="relative group">
+                  <button @mouseenter="showMegaMenu = true" @click="showMegaMenu = !showMegaMenu"
+                    class="flex items-center gap-1 py-2 hover:text-gray-300 transition duration-300">
+                    Menu
+                    <svg class="w-4 h-4 transition-transform duration-200" :class="showMegaMenu ? '-rotate-180' : ''"
+                      fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
-                  <ul x-show="openMenu === 'profil'" x-transition
-                    class="dropdown-menu absolute bg-black bg-opacity-90 text-white p-4 rounded-lg shadow-lg space-y-2">
-                    <li><a href="#profil" class="dropdown-item">Profil Kota Banda Aceh</a></li>
-                    <li><a href="#sejarah" class="dropdown-item">Sejarah Kota Banda Aceh</a></li>
-                    <li><a href="#budaya" class="dropdown-item">Budaya</a></li>
-                    <li><a href="#dokumentasi" class="dropdown-item">Dokumentasi</a></li>
-                  </ul>
+
+                  <!-- Mega Menu -->
+                  <div x-show="showMegaMenu" @mouseleave="showMegaMenu = false" @click.outside="showMegaMenu = false"
+                    @keydown.escape="showMegaMenu = false"
+                    class="absolute right-0 w-screen md:w-[600px] bg-black bg-opacity-90 p-5 rounded-lg">
+                    <div class="grid md:grid-cols-2 gap-3">
+                      <a href="#sejarah"
+                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">Sejarah Kota Bandung</h3>
+                          <p class="text-sm text-gray-300">Pelajari tentang sejarah Kota Bandung</p>
+                        </div>
+                      </a>
+                      <a href="#budaya"
+                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">Budaya</h3>
+                          <p class="text-sm text-gray-300">Eksplorasi keragaman budaya Kota Bandung</p>
+                        </div>
+                      </a>
+                      <a href="#dokumentasi"
+                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">Dokumentasi</h3>
+                          <p class="text-sm text-gray-300">Menampilkan keseluruhan isi dari kegiatan Kota Bandung</p>
+                        </div>
+                      </a>
+                      <a href="#pariwisata"
+                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">Pariwisata</h3>
+                          <p class="text-sm text-gray-300">Temukan tempat wisata terbaik di Medan</p>
+                        </div>
+                      </a>
+                      <a href="#layanan"
+                        class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">Layanan</h3>
+                          <p class="text-sm text-gray-300">Tempat pengaduan masyarakat terkait hal hal yang terjadi di
+                            Kota Bandung</p>
+                        </div>
+                      </a>
+                      <a href="#faq" class="flex items-start p-3 rounded-lg hover:bg-white/10 transition duration-300">
+                        <div>
+                          <h3 class="font-semibold mb-1">FAQ</h3>
+                          <p class="text-sm text-gray-300">Tempat pengaduan terbuka bagi seluruh masyarakat Kota Bandung
+                          </p>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
                 </li>
-
-                <!-- Menu -->
-                <li class="relative" @mouseenter="openMenu = 'menu'" @mouseleave="openMenu = null">
-                  <button class="menu-item flex items-center space-x-2">
-                    <span>Menu</span>
-                    <svg class="w-4 h-4 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                  </button>
-                  <ul x-show="openMenu === 'menu'" x-transition
-                    class="dropdown-menu absolute bg-black bg-opacity-90 text-white p-4 rounded-lg shadow-lg space-y-2">
-                    <li><a href="#layanan" class="dropdown-item">Layanan</a></li>
-                    <li><a href="#dokumentasi" class="dropdown-item">Dokumentasi</a></li>
-                  </ul>
+                <li>
+                  <a href="#pemerintahan"
+                    class="block py-2 hover:text-gray-300 transition duration-300">Pemerintahan</a>
                 </li>
-
-                <!-- Other Static Links -->
-                <li><a href="#pemerintahan" class="menu-item">Pemerintahan</a></li>
-                <li><a href="#inovasi" class="menu-item">Inovasi</a></li>
-                <li><a href="/Berita/indeks.html" class="menu-item">Berita</a></li>
-
-                <!-- Login Menu -->
-                <li class="ml-auto">
-                  <a href="/Login/login.html" class="menu-item">Login</a>
+                <li>
+                  <a href="#inovasi" class="block py-2 hover:text-gray-300 transition duration-300">Inovasi</a>
+                </li>
+                <li>
+                  <a href="/Berita/indeks.html"
+                    class="block py-2 hover:text-gray-300 transition duration-300">Berita</a>
                 </li>
               </ul>
             </div>
@@ -84,27 +120,13 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero-section h-screen relative">
-    <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover -z-10">
-      <source src="/assets/aceh.mp4" type="video/mp4">
-    </video>
-    <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/50 -z-10"></div>
-    <div class="container mx-auto px-6 absolute inset-0 flex flex-col items-center">
-      <div class="flex-grow flex items-center justify-center">
-        <div class="text-center text-white">
-          <h1 class="text-6xl font-bold mb-4">Selamat Datang di Kota Banda Aceh</h1>
-          <p class="text-xl">Deskprisi text kota banda aceh disini.</p>
-        </div>
-      </div>
-      <div class="mb-8">
-        <label class="switch">
-          <input type="checkbox" onchange="buttonFunction()">
-          <span class="slider round"></span>
-        </label>
-      </div>
-    </div>
+  <!-- Main Content -->
+  <section id="home" class="hero-section relative">
+    <!-- Gambar latar belakang -->
+    <img src="https://bandungbaratkab.go.id/img/kbb-vector.png" alt="Background Image"
+      class="absolute inset-0 w-full h-auto object-cover -z-10">
   </section>
+
 
 
   <!-- Layanan Section -->
@@ -446,114 +468,16 @@
     </section>
   </div>
 
-
-
-
-
-
-
-  <div class="container mx-auto p-4">
-    <section class="min-h-screen p-8 m-5 ">
-      <div class="max-w-6xl mx-auto border-2 border-gray-300 rounded-lg shadow-md p-8 h-full bg-gray-100">
-        <!-- Header -->
-        <div class="text-center mb-12">
-          <p class="text-blue-600 font-medium mb-2">ELEMNT TERBARU DARI WEB</p>
-          <h1 class="text-4xl font-bold text-navy-900">ISI BEBAS DAH PUSING</h1>
-        </div>
-
-        <!-- FAQ Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 h-full" id="faq">
-          <div class="bg-white px-8 py-6 rounded-lg shadow-sm h-full">
-            <h3 class="text-xl font-bold mb-4">Is TailGrids Well-documented?</h3>
-            <p class="text-gray-600">
-              There are many variations of passages of Lorem Ipsum available,
-              but the majority have suffered alteration in some form, by injected
-              humour, or randomised words which don't look even slightly
-              passage of Lorem Ipsum believable.
-            </p>
-          </div>
-
-          <div class="bg-white px-8 py-6 rounded-lg shadow-sm h-full">
-            <h3 class="text-xl font-bold mb-4">Is it one-time payment?</h3>
-            <p class="text-gray-600">
-              There are many variations of passages of Lorem Ipsum available,
-              but the majority have suffered alteration in some form, by injected
-              humour, or randomised words which don't look even slightly
-              passage of Lorem Ipsum believable.
-            </p>
-          </div>
-
-          <div class="bg-white px-8 py-6 rounded-lg shadow-sm h-full">
-            <h3 class="text-xl font-bold mb-4">Do you provide support?</h3>
-            <p class="text-gray-600">
-              There are many variations of passages of Lorem Ipsum available,
-              but the majority have suffered alteration in some form, by injected
-              humour, or randomised words which don't look even slightly
-              passage of Lorem Ipsum believable.
-            </p>
-          </div>
-
-          <div class="bg-white px-8 py-6 rounded-lg shadow-sm h-full">
-            <h3 class="text-xl font-bold mb-4">Which license type is suitable for me?</h3>
-            <p class="text-gray-600">
-              There are many variations of passages of Lorem Ipsum available,
-              but the majority have suffered alteration in some form, by injected
-              humour, or randomised words which don't look even slightly
-              passage of Lorem Ipsum believable.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-
   <!-- Footer -->
-  <footer class="bg-black text-white py-8 w-full">
-    <div class="container mx-auto px-6">
-      <p class="text-center">&copy; 2024 ModernCity. All rights reserved.</p>
+  <footer class="bg-black text-white py-6 w-full">
+    <div class="container mx-auto px-4">
+      <p class="text-center text-sm">&copy; 2024 ModernCity. All rights reserved.</p>
     </div>
   </footer>
 
+
+  <script type="module" src="main.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
-  <script type="module" src="main.js"></script>\
-  <script src="main.js"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <script>
-    const ctx = document.getElementById('myChart');
-
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Makanan Ringan', 'Makanan Berat', 'Desert', 'Minuman'],
-        datasets: [{
-          label: 'Total Jenis Makanan',
-          data: [12, 19, 3, 5],
-          backgroundColor: [
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)'
-          ],
-          borderColor: [
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 99, 132, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)'
-          ],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
-  </script>
 </body>
 
 </html>

@@ -1,0 +1,40 @@
+.hero-section {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5)) ;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  margin-bottom: -36rem;
+}
+
+.parallax {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.btn {
+  background-color: white;
+  color: black;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #e2e8f0;
+}
+
+.news-card {
+  transition: transform 0.3s ease-in-out;
+}
+
+.news-card:hover {
+  transform: translateY(-5px);
+}
+
